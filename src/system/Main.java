@@ -46,6 +46,9 @@ public class Main extends Application implements RMIClientSocketFactory, Seriali
             Campaign campaign = new Campaign();
             window.setMember("campaign", campaign);
 
+            ReportsManager reportsManager = new ReportsManager();
+            reportsManager.convertReportsToHTMLString();
+
 
             mainEngine.getLoadWorker().stateProperty().addListener(
                     new ChangeListener<Worker.State>(){

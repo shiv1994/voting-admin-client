@@ -30,9 +30,9 @@ function createCampaign(){
 	$('#candidate-table tbody tr').each(function(){
 		var $tds = $(this).find('td');
 
-		// get candidate name from table. 
+		// get candidate name from table.
 		var name = $tds[0].childNodes[0].value;
-		//get candidate description from table. 
+		//get candidate description from table.
 		var description = $tds[1].childNodes[0].value;
 		//get candidate img url from table.
 		var imageURL = $tds[2].childNodes[0].value;
@@ -55,6 +55,13 @@ function createCampaign(){
 
     }
 
-    stub.addCampaign(campaign);
+    var result = stub.addCampaign(campaign);
+
+    if(result == true){
+        document.getElementById('message-area').innerHTML = '<h3 style="color:red"> The campaign was added successfully.</h3>';
+    }
+    else{
+        document.getElementById('message-area').innerHTML = '<h3 style="color:red"> The campaign was not added successfully. <br> The data was invalid or campaign time overlaps with existing campaign. </h3>';
+    }
 
 }
