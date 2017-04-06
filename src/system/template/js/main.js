@@ -17,6 +17,7 @@ function createReports(){
 
 function createCampaign(){
 
+    campaign.emptyCandidates();
 	/* get campaign name, start time, and end time. */
 	var campaign_name = $('#campaign-name').val();
 	var start_time = $('#start-time').val();
