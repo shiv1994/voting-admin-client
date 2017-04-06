@@ -46,8 +46,9 @@ public class Main extends Application implements RMIClientSocketFactory, Seriali
             Campaign campaign = new Campaign();
             window.setMember("campaign", campaign);
 
-            ReportsManager reportsManager = new ReportsManager();
-            reportsManager.convertReportsToHTMLString();
+            ReportsManager reportsManager = new ReportsManager(stub);
+            window.setMember("reportsManager", reportsManager);
+
 
 
             mainEngine.getLoadWorker().stateProperty().addListener(
@@ -61,6 +62,7 @@ public class Main extends Application implements RMIClientSocketFactory, Seriali
                                 JSObject window = (JSObject)mainEngine.executeScript("window");
                                 window.setMember("campaign", campaign);
                                 window.setMember("stub", stub);
+                                window.setMember("reportsManager", reportsManager);
                             }
                         }
                     });

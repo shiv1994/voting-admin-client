@@ -9,6 +9,12 @@ function addCandidate(){
 	$('#candidate-table tbody').append(row);
 }
 
+function createReports(){
+    data = reportsManager.convertReportsToHTMLString();
+
+    $('#report-block').append(data);
+}
+
 function createCampaign(){
 
 	/* get campaign name, start time, and end time. */

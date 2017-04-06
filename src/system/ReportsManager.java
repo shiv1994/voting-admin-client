@@ -12,7 +12,7 @@ public class ReportsManager {
     private ArrayList<Report> reports;
     private AdminVotingInterface stub;
 
-    public ReportsManager(){
+    public ReportsManager(AdminVotingInterface stub){
         this.stub = stub;
         reports = new ArrayList<Report>();
     }
@@ -21,13 +21,16 @@ public class ReportsManager {
     public String convertReportsToHTMLString(){
 
        try{
-           System.out.println(stub.getReports());
+           reports = stub.getReports();
+           //reports.add(new Report("Test Campaign", "SOME WINNER", 100, 150));
        }
        catch(Exception e){
            e.printStackTrace();
        }
 
-        String res = "";
+        String res = "<table class='table' id='reports-table'>";
+        res += "<thead><tr><th>Campaign Name</th><th>Winner Name</th><th>Winner Votes</th><th>Total Votes</th></tr></thead>";
+        res += "<tbody>";
 
         for(Report r : reports){
             res += "<tr>";
@@ -37,6 +40,8 @@ public class ReportsManager {
             res += "<td>" + r.getTotalVotes() + "</td>";
             res += "</tr>";
         }
+
+        res += "</tbody></table>";
 
         System.out.println(res);
 
